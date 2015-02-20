@@ -10,11 +10,11 @@ app.service('FirebaseService', function($http, $q){
     })
   }
 
-    thi.addPost = function(post) {
+    this.addPost = function(post) {
       console.log(post)
       return $http({
         method: 'PUT',
-        url: 'https://devmtn.firebaseio.com/posts/',
+        url: 'https://devmtn.firebaseio.com/posts.json',
         data: post
       }).then(function(data) {
         console.log('post res', data)
@@ -29,18 +29,18 @@ app.service('FirebaseService', function($http, $q){
       } else {
         console.log('them karmas broke')
       }
-    }
     
     return $http({
       method: 'PATCH',
-      url: 'https://devmtn.firebaseio.com/posts/' + postId + '/comments.',
+      url: 'https://devmtn.firebaseio.com/posts/' + postId + '/comments.json',
       data: {karma: karma}
     })
+    }
     
   this.addComment = function(postID, commentObj) {
     return $http({
       method: 'POST',
-      url: 'https://devmtn.firebaseio.com/posts/' + postId + '/comments.',
+      url: 'https://devmtn.firebaseio.com/posts/' + postId + '/comments.json',
       data: {coment: commentObj}
     })
   }
