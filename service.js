@@ -1,13 +1,13 @@
 var app = angular.module('reddit');
 
-app.service('FirebaseService', function($http, $q){
-  this.getData = function(){
+app.service('FirebaseService', function($http, $q) {
+  this.getData = function() {
     return $http({
       method: 'GET',
       url: 'https://devmtn.firebaseio.com/posts.json',
-    }).then(function(data){
+    }).then(function(data) {
       return data.data; 
-    })
+    });
   }
 
     this.addPost = function(post) {
@@ -21,10 +21,10 @@ app.service('FirebaseService', function($http, $q){
       });
     }
   
-    this.vote = function(postId, direction, karma){
+    this.vote = function(postId, direction, karma) {
       if(direction === 'up') {
        karma++;
-      } else if(direction === 'down'){
+      } else if(direction === 'down') {
         karma--;
       } else {
         console.log('them karmas broke')
@@ -34,19 +34,19 @@ app.service('FirebaseService', function($http, $q){
       method: 'PATCH',
       url: 'https://devmtn.firebaseio.com/posts/' + postId + '/comments.json',
       data: {karma: karma}
-    })
+    });
     }
     
   this.addComment = function(postID, commentObj) {
     return $http({
       method: 'POST',
       url: 'https://devmtn.firebaseio.com/posts/' + postId + '/comments.json',
-      data: {coment: commentObj}
-    })
+      data: {comment: commentObj}
+    });
   }
 
 
 
 
 
-})
+});

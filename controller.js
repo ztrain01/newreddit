@@ -47,7 +47,7 @@ var guid = function() {
   $scope.vote = function(id, direction) {
     FirebaseService.vote(id, direction, $scope.posts[id].karma).then(function(data){
       getData();
-    })
+    });
       
 }
 
@@ -58,6 +58,6 @@ var guid = function() {
     FirebaseService.addComment(id, commentObj).then(function(data) {
       getData();
     });
-  };
+  }
 
-})
+});
