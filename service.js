@@ -1,10 +1,12 @@
 var app = angular.module('reddit');
 
 app.service('FirebaseService', function($http, $q){
-
-  this.getPosts = function(){
-    return $http.get('https://devmtn.firebaseio.com/posts.json').then(function(result){
-      return result.data; 
+  this.getData = function(){
+    return $http({
+      method: 'GET',
+      url: 'https://devmtn.firebaseio.com/posts.json',
+    }).then(function(data){
+      return data.data; 
     })
   }
 
@@ -15,9 +17,9 @@ app.service('FirebaseService', function($http, $q){
         url: 'https://devmtn.firebaseio.com/posts/',
         data: post
       }).then(function(data) {
-      
-      }
-  
+        console.log('post res', data)
+      });
+    }
   
     this.vote = function(postId, direction, karma){
       if(direction === 'up') {
